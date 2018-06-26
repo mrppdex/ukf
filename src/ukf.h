@@ -90,6 +90,7 @@ public:
   double lambda_;
 
   Tools tools;
+  vector<double> nis;
 
   /**
    * Constructor
@@ -129,16 +130,16 @@ public:
   // Prediction
   MatrixXd GenerateSigmaPoints();
   MatrixXd PredictSigmaPoints(const MatrixXd &x_sig, const double delta_t);
-  void PredictMeanAndCovariance(const MatrixXd &Xsig_pred, VectorXd* x_out, MatrixXd* P_out);
+  void PredictMeanAndCovariance();
 
   // Update
   MatrixXd PredictMeasurement();
-  MatrixXd PredictRadarMeasurement(const MatrixXd &Xsig_pred, VectorXd* z_out, MatrixXd* S_out);
+  MatrixXd PredictRadarMeasurement();
   VectorXd PredictState(const VectorXd &x, const double delta_t);
   void UpdateState();
-  void UpdateRadarState(const MatrixXd &Xsig_pred, const VectorXd z, VectorXd* x_out, MatrixXd* P_out);
+  void UpdateRadarState(const VectorXd &z);
 
-
+  void NormalizedInnovationSquared(const VectorXd& x);
 
 };
 

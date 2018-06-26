@@ -36,14 +36,8 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 
 MatrixXd Tools::DiagonizeMatrix(const MatrixXd& mat)
 {
-  //MatrixXd m = MatrixXd::Zero(mat.rows(), mat.cols());
-  MatrixXd m = mat;
-  //m.diagonal() = mat.diagonal();
-  VectorXd v4 = VectorXd(4);
-  v4 << 0, 0, 0, 0;
-
-  m.col(4).head(4) = v4;
-  m.row(4).head(4) = v4;
-
+  MatrixXd m = MatrixXd::Zero(mat.rows(), mat.cols());
+  m.diagonal() = mat.diagonal();
+  
   return m;
 }
