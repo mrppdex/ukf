@@ -38,6 +38,17 @@ MatrixXd Tools::DiagonizeMatrix(const MatrixXd& mat)
 {
   MatrixXd m = MatrixXd::Zero(mat.rows(), mat.cols());
   m.diagonal() = mat.diagonal();
-  
+
   return m;
+}
+
+double Tools::NormalizeAngle(const double angle)
+{
+  //std::cout << "Angle Normalization:\n\tbefore: " << angle;
+  //double a = angle;
+  //while (a > M_PI) a -= 2.*M_PI;
+  //while (a < -M_PI) a += 2.*M_PI;
+  double a = atan2(sin(angle), cos(angle));
+  //std::cout << "\n\tafter: " << a << std::endl;
+  return a;
 }

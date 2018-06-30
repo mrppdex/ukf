@@ -3,6 +3,9 @@
 #include <vector>
 #include "Eigen/Dense"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using namespace std;
@@ -24,6 +27,7 @@ public:
   */
   VectorXd CalculateRMSE(const vector<VectorXd> &estimations, const vector<VectorXd> &ground_truth);
   MatrixXd DiagonizeMatrix(const MatrixXd& mat);
+  double NormalizeAngle(double angle);
 
 };
 
